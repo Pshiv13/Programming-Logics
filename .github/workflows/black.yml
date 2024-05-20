@@ -13,7 +13,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'  # specify the Python version
+        python-version: '3.x'  # specify the Python version
 
     - name: Install dependencies
       run: |
@@ -22,8 +22,15 @@ jobs:
 
     - name: Run Black
       id: black
+      run: black .
+
+    - name: Commit and push changes
+      if: ${{ steps.black.outcome == 'success' }}
       run: |
-        black .
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git diff --exit-code || (git add . && git commit -m 'Apply Black code formatting' && git push)
+        git add .
+        git commit -m 'Apply Black code formatting'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

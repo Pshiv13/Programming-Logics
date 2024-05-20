@@ -33,9 +33,10 @@ jobs:
       if: ${{ steps.black.outcome == 'success' }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        USER_EMAIL: ${{ secrets.USER_EMAIL }}
       run: |
-        git config --global user.name 'Pshiv13'
-        git config --global user.email 'pshiv13798@gmail.com'
+        git config --global user.name 'YourGitHubUsername'
+        git config --global user.email $USER_EMAIL
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
         git add .
         git commit -m 'Apply Black code formatting'

@@ -49,4 +49,5 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        git push https://${GH_TOKEN}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+        git remote set-url origin https://${GH_TOKEN}@github.com/${{ github.repository }}.git
+        git push origin HEAD:${{ github.ref }}

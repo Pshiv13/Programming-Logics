@@ -27,8 +27,20 @@ jobs:
         python -m pip install --upgrade pip
         pip install black
 
-    - name: Check Black version
-      run: black --version
-
-    - name: Run Black
+    - name: Run Black to check formatting
+      id: black_check
       run: black --check .
+      continue-on-error: true
+
+    - name: Run Black to reformat code
+      if: steps.black_check.outcome == 'failure'
+      run: black .
+
+    - name: Commit changes
+      if: steps.black_check.outcome == 'failure'
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        git commit -m 'Apply Black formatting' || echo 'No changes to commit'
+        git push

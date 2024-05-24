@@ -1,4 +1,4 @@
-''' Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+""" Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.
 
@@ -11,11 +11,12 @@ nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
 nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
 nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
 The distinct triplets are [-1,0,1] and [-1,-1,2].
-Notice that the order of the output and the order of the triplets does not matter. '''
+Notice that the order of the output and the order of the triplets does not matter. """
 
 # add all element with index in hash. e[element] = index.
 
-# compare if -(two number in hash) if yes then sort its indexes and add to list -> tuple -> set. 
+# compare if -(two number in hash) if yes then sort its indexes and add to list -> tuple -> set.
+
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
@@ -25,12 +26,12 @@ class Solution:
 
         for i, j in enumerate(nums):
             dic[j] = i
-        
+
         for i in range(n):
-            for j in range(i+1,n):
+            for j in range(i + 1, n):
                 d = -nums[i] - nums[j]
 
                 if d in dic and dic[d] != i and dic[d] != j:
                     s.add(tuple(sorted([d, nums[i], nums[j]])))
-                      
+
         return s

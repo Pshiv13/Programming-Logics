@@ -2,6 +2,7 @@
 
 ## Use BFS technique and add node val of result at right most node at every level.
 
+
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         a = []
@@ -19,5 +20,5 @@ class Solution:
                     q.append(node.right)
             if right:
                 a.append(right.val)
-                
+
         return a

@@ -1,4 +1,4 @@
-''' You are given an array prices where prices[i] is the price of a given stock on the ith day.
+""" You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
 You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
 
@@ -14,7 +14,7 @@ Example 2:
 
 Input: prices = [7,6,4,3,1]
 Output: 0
-Explanation: In this case, no transactions are done and the max profit = 0. '''
+Explanation: In this case, no transactions are done and the max profit = 0. """
 
 ## use left and right pointer
 ## find the max profit
@@ -24,11 +24,11 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         l, r, m = 0, 1, 0
 
-        while(r<len(prices)):
+        while r < len(prices):
             if prices[r] > prices[l]:
                 profit = prices[r] - prices[l]
                 m = max(m, profit)
             else:
-                l=r         
-            r+=1
+                l = r
+            r += 1
         return m

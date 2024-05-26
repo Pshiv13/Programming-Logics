@@ -1,4 +1,4 @@
-''' Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
+""" Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
 
 Implement the TimeMap class:
 
@@ -12,9 +12,10 @@ Input
 ["TimeMap", "set", "get", "get", "set", "get", "get"]
 [[], ["foo", "bar", 1], ["foo", 1], ["foo", 3], ["foo", "bar2", 4], ["foo", 4], ["foo", 5]]
 Output
-[null, null, "bar", "bar", null, "bar2", "bar2"] '''
+[null, null, "bar", "bar", null, "bar2", "bar2"] """
 
 ## Use binary search and store closest value all the time
+
 
 class TimeMap:
 
@@ -28,19 +29,21 @@ class TimeMap:
 
     def get(self, key: str, timestamp: int) -> str:
         res = ""
-        if key not in self.store: return ""
+        if key not in self.store:
+            return ""
         values = self.store.get(key)
         l, r = 0, len(values) - 1
 
-        while(l<=r):
-            m = (l+r)//2
-            if values[m][1] <= timestamp: 
+        while l <= r:
+            m = (l + r) // 2
+            if values[m][1] <= timestamp:
                 res = values[m][0]
-                l = m+1
+                l = m + 1
             else:
-                r = m-1
+                r = m - 1
         return res
-        
+
+
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
 # obj.set(key,value,timestamp)

@@ -1,4 +1,4 @@
-''' You are given the head of a singly linked-list. The list can be represented as:
+""" You are given the head of a singly linked-list. The list can be represented as:
 
 L0 → L1 → … → Ln - 1 → Ln
 Reorder the list to be on the following form:
@@ -9,7 +9,8 @@ You may not modify the values in the list's nodes. Only nodes themselves may be 
 Example 1:
 
 Input: head = [1,2,3,4]
-Output: [1,4,2,3] '''
+Output: [1,4,2,3] """
+
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
@@ -39,5 +40,3 @@ class Solution:
             first.next = second
             second.next = tmp1
             first, second = tmp1, tmp2
-        
-        

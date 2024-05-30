@@ -1,4 +1,4 @@
-''' Design a data structure that supports adding new words and finding if a string matches any previously added string.
+""" Design a data structure that supports adding new words and finding if a string matches any previously added string.
 
 Implement the WordDictionary class:
 
@@ -12,15 +12,17 @@ Input
 ["WordDictionary","addWord","addWord","addWord","search","search","search","search"]
 [[],["bad"],["dad"],["mad"],["pad"],["bad"],[".ad"],["b.."]]
 Output
-[null,null,null,null,false,true,true,true] '''
+[null,null,null,null,false,true,true,true] """
 
 ## DFS logic needs to understand briefly
+
 
 class TrieNode:
 
     def __init__(self):
         self.children = {}
         self.word = False
+
 
 class WordDictionary:
 
@@ -43,7 +45,7 @@ class WordDictionary:
                 c = word[i]
                 if c == ".":
                     for child in cur.children.values():
-                        if dfs(i+1, child):
+                        if dfs(i + 1, child):
                             return True
                     return False
 
@@ -52,8 +54,10 @@ class WordDictionary:
                         return False
                     cur = cur.children[c]
             return cur.word
-        return dfs(0,self.root)
-        
+
+        return dfs(0, self.root)
+
+
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
 # obj.addWord(word)

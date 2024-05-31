@@ -1,4 +1,4 @@
-''' Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
+""" Given an array of integers temperatures represents the daily temperatures, return an array answer such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep answer[i] == 0 instead.
 
 Example 1:
 
@@ -11,17 +11,18 @@ Output: [1,1,1,0]
 Example 3:
 
 Input: temperatures = [30,60,90]
-Output: [1,1,0] '''
+Output: [1,1,0] """
+
 
 class Solution:
     def dailyTemperatures(self, temp: List[int]) -> List[int]:
         stack = []
-        res = [0]*len(temp)
+        res = [0] * len(temp)
 
         for i, t in enumerate(temp):
             while stack and t > stack[-1][0]:
                 temp, index = stack.pop()
-                res[index] = (i - index)
-            stack.append([t,i])
-        
+                res[index] = i - index
+            stack.append([t, i])
+
         return res

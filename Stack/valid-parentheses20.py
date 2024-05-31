@@ -1,4 +1,4 @@
-''' Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+""" Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 An input string is valid if:
 
@@ -17,9 +17,10 @@ Output: true
 Example 3:
 
 Input: s = "(]"
-Output: false '''
+Output: false """
 
 # Approach 1
+
 
 class Solution:
     def isValid(self, s: str) -> bool:
@@ -27,33 +28,38 @@ class Solution:
 
         for i in s:
 
-            if i == '(' or i == '{' or i == '[': stack.append(i)
+            if i == "(" or i == "{" or i == "[":
+                stack.append(i)
 
-            elif i == ')' and len(stack) != 0 and stack[-1] == '(':
-                stack.pop()
-            
-            elif i == ']' and len(stack) != 0 and stack[-1] == '[':
+            elif i == ")" and len(stack) != 0 and stack[-1] == "(":
                 stack.pop()
 
-            elif i == '}' and len(stack) != 0 and stack[-1] == '{':
+            elif i == "]" and len(stack) != 0 and stack[-1] == "[":
                 stack.pop()
-            
+
+            elif i == "}" and len(stack) != 0 and stack[-1] == "{":
+                stack.pop()
+
             else:
                 return False
-        
-        return len(stack)==0
+
+        return len(stack) == 0
+
 
 # Approach 2
+
 
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        closeToOpen = {")" : "(", "]" : "[", "}" : "{"}
-        
+        closeToOpen = {")": "(", "]": "[", "}": "{"}
+
         for c in s:
             if c in closeToOpen:
                 if stack and stack[-1] == closeToOpen[c]:
                     stack.pop()
-                else: return False
-            else: stack.append(c)
+                else:
+                    return False
+            else:
+                stack.append(c)
         return True if not stack else False

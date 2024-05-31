@@ -1,4 +1,4 @@
-''' Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+""" Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
 Implement the MinStack class:
 
@@ -16,9 +16,10 @@ Input
 [[],[-2],[0],[-3],[],[],[],[]]
 
 Output
-[null,null,null,null,-3,null,0,-2] '''
+[null,null,null,null,-3,null,0,-2] """
 
 # Using two stacks and maintain min at every element
+
 
 class MinStack:
 
@@ -34,7 +35,7 @@ class MinStack:
     def pop(self) -> None:
         self.stack.pop()
         self.minStack.pop()
-        
+
     def top(self) -> int:
         return self.stack[-1]
 

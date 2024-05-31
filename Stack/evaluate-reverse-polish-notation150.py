@@ -1,4 +1,4 @@
-''' You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
+""" You are given an array of strings tokens that represents an arithmetic expression in a Reverse Polish Notation.
 
 Evaluate the expression. Return an integer that represents the value of the expression.
 
@@ -20,26 +20,28 @@ Example 2:
 
 Input: tokens = ["4","13","5","/","+"]
 Output: 6
-Explanation: (4 + (13 / 5)) = 6 '''
+Explanation: (4 + (13 / 5)) = 6 """
+
 
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
 
         for i in tokens:
-            if i not in '+-/*': stack.append(int(i))
-            
+            if i not in "+-/*":
+                stack.append(int(i))
+
             else:
                 v1 = stack.pop()
                 v2 = stack.pop()
-                
+
                 if i == "/":
-                    stack.append(int(v2/v1))
+                    stack.append(int(v2 / v1))
                 if i == "*":
-                    stack.append(v2*v1)
+                    stack.append(v2 * v1)
                 if i == "+":
-                    stack.append(v2+v1)
+                    stack.append(v2 + v1)
                 if i == "-":
-                    stack.append(v2-v1)
+                    stack.append(v2 - v1)
 
         return stack[0]

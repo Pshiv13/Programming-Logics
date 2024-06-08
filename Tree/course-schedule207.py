@@ -1,4 +1,4 @@
-''' There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+""" There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
 
 For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
 Return true if you can finish all courses. Otherwise, return false.
@@ -14,9 +14,10 @@ Example 2:
 Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
 Output: false
 Explanation: There are a total of 2 courses to take. 
-To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible. '''
+To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible. """
 
 # Verify there are no cycles in  graph. Mark nodes visited, visiting or unvisited. Use DFS approach.
+
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
@@ -25,28 +26,30 @@ class Solution:
         UNVISITED = 0
         VISITING = 1
         VISITED = 2
-        states = [UNVISITED]*numCourses
+        states = [UNVISITED] * numCourses
 
         for a, b in course:
             g[a].append(b)
 
         def dfs(i):
             node = states[i]
-            if node == VISITED: return True
+            if node == VISITED:
+                return True
 
-            elif node == VISITING: return False
+            elif node == VISITING:
+                return False
 
             states[i] = VISITING
 
             for nei in g[i]:
                 if not dfs(nei):
                     return False
-            
+
             states[i] = VISITED
             return True
-        
+
         for i in range(numCourses):
             if not dfs(i):
                 return False
-        
+
         return True

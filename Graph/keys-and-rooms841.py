@@ -1,4 +1,4 @@
-''' There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
+""" There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0. Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
 
 When you visit a room, you may find a set of distinct keys in it. Each key has a number on it, denoting which room it unlocks, and you can take all of them with you to unlock the other rooms.
 
@@ -18,7 +18,8 @@ Example 2:
 
 Input: rooms = [[1,3],[3,0,1],[2],[0]]
 Output: false
-Explanation: We can not enter room number 2 since the only key that unlocks it is in that room. '''
+Explanation: We can not enter room number 2 since the only key that unlocks it is in that room. """
+
 
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
@@ -41,4 +42,5 @@ class Solution:
 
         if len(seen) == n:
             return True
-        else: return False 
+        else:
+            return False

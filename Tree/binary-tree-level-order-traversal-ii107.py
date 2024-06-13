@@ -1,4 +1,4 @@
-''' Given the root of a binary tree, return the bottom-up level order traversal of its nodes' values. (i.e., from left to right, level by level from leaf to root).
+""" Given the root of a binary tree, return the bottom-up level order traversal of its nodes' values. (i.e., from left to right, level by level from leaf to root).
 
 Example 1:
 
@@ -11,9 +11,10 @@ Output: [[1]]
 Example 3:
 
 Input: root = []
-Output: [] '''
+Output: [] """
 
 # Using simple BFS
+
 
 class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
@@ -27,9 +28,11 @@ class Solution:
                 n = q.popleft()
                 if n:
                     a.append(n.val)
-                    if n.left: q.append(n.left)
-                    if n.right: q.append(n.right)
-            if len(a)>0:
+                    if n.left:
+                        q.append(n.left)
+                    if n.right:
+                        q.append(n.right)
+            if len(a) > 0:
                 res.append(a)
-        
-        return(res[::-1])
+
+        return res[::-1]

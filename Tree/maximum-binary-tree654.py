@@ -1,4 +1,4 @@
-''' You are given an integer array nums with no duplicates. A maximum binary tree can be built recursively from nums using the following algorithm:
+""" You are given an integer array nums with no duplicates. A maximum binary tree can be built recursively from nums using the following algorithm:
 
 Create a root node whose value is the maximum value in nums.
 Recursively build the left subtree on the subarray prefix to the left of the maximum value.
@@ -18,11 +18,12 @@ Explanation: The recursive calls are as follow:
             - Only one element, so child is a node with value 1.
     - The largest value in [0,5] is 5. Left prefix is [0] and right suffix is [].
         - Only one element, so child is a node with value 0.
-        - Empty array, so no child. '''
+        - Empty array, so no child. """
+
 
 class Solution:
     def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
-        
+
         if not nums:
             return
 
@@ -32,8 +33,7 @@ class Solution:
         root = TreeNode(n)
         lenTree = len(nums)
 
-        root.left = self.constructMaximumBinaryTree(nums[0: pos])
-        root.right = self.constructMaximumBinaryTree(nums[pos + 1: lenTree])
+        root.left = self.constructMaximumBinaryTree(nums[0:pos])
+        root.right = self.constructMaximumBinaryTree(nums[pos + 1 : lenTree])
 
         return root
-

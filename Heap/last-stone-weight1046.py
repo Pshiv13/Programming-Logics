@@ -1,6 +1,6 @@
-''' Example 1
+""" Example 1
 Input: nums = [3,2,1,5,6,4], k = 2
-Output: 5 '''
+Output: 5 """
 
 ## Remove top two element and append their diff to heap.
 ## heapq by default min heap so convert all element to (-1)* element

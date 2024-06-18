@@ -1,4 +1,4 @@
-''' You are given an integer array score of size n, where score[i] is the score of the ith athlete in a competition. All the scores are guaranteed to be unique.
+""" You are given an integer array score of size n, where score[i] is the score of the ith athlete in a competition. All the scores are guaranteed to be unique.
 The athletes are placed based on their scores, where the 1st place athlete has the highest score, the 2nd place athlete has the 2nd highest score, and so on. 
 The placement of each athlete determines their rank:
 The 1st place athlete's rank is "Gold Medal".
@@ -17,9 +17,11 @@ Example 2:
 
 Input: score = [10,3,8,9,4]
 Output: ["Gold Medal","5","Bronze Medal","Silver Medal","4"]
-Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th]. '''
+Explanation: The placements are [1st, 5th, 3rd, 2nd, 4th]. """
 
 import heapq
+
+
 class Solution:
     def findRelativeRanks(self, score: List[int]) -> List[str]:
         n = len(score)
@@ -39,5 +41,5 @@ class Solution:
                 ans[idx] = "Bronze Medal"
             else:
                 ans[idx] = str(rank)
-        
+
         return ans

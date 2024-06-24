@@ -77,10 +77,12 @@ class Solution:
         one = 1
         two = 2
 
-        if n ==1: return one
-        if n == 2: return two
+        if n == 1:
+            return one
+        if n == 2:
+            return two
 
-        for i in range(n-2):
-            one, two = two, one+two
-        
+        for i in range(n - 2):
+            one, two = two, one + two
+
         return two

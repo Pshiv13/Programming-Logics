@@ -1,4 +1,4 @@
-''' Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+""" Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
 A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 Example 1:
 
@@ -7,7 +7,8 @@ Output: true
 Example 2:
 
 Input: s = "axc", t = "ahbgdc"
-Output: false'''
+Output: false"""
+
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
@@ -15,9 +16,9 @@ class Solution:
         S = len(s)
         T = len(t)
 
-        while(i<S and j<T):
+        while i < S and j < T:
             if s[i] == t[j]:
-                i+=1
-            j+=1
-        
+                i += 1
+            j += 1
+
         return i == S

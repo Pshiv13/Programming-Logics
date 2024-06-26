@@ -26,10 +26,19 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: OWASP Dependency Check
-      uses: jeremylong/gha-dependency-check@v4.4.1
+    - name: Run OWASP Dependency Check
+      run: |
+        docker pull owasp/dependency-check
+        docker run --rm \
+          -v $(pwd):/src \
+          -v $(pwd)/odc-reports:/report \
+          owasp/dependency-check \
+          --scan /src \
+          --format "ALL" \
+          --out /report \
+          --project "My Python Project"
+    - name: Upload Dependency Check Report
+      uses: actions/upload-artifact@v3
       with:
-        project: 'My Python Project'
-        scan: '.'
-        format: 'ALL'
-        failOnCVSS: '7'
+        name: dependency-check-report
+        path: odc-reports

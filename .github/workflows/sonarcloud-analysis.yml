@@ -17,17 +17,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Download SonarScanner
+      run: |
+        curl -L -o sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.12008-linux.zip
+        unzip sonar-scanner-cli.zip -d /opt/sonar-scanner
+        echo "export PATH=\$PATH:/opt/sonar-scanner/sonar-scanner-4.8.0.12008-linux/bin" >> $GITHUB_ENV
+
+    - name: Verify SonarScanner ZIP
+      run: unzip -t sonar-scanner-cli.zip
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'  # Specify the Python version you are using
-
-    - name: Install SonarScanner
-      run: |
-        curl -L -o sonar-scanner-cli.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.12008-linux.zip
-        unzip sonar-scanner-cli.zip
-        mv sonar-scanner-4.8.0.12008-linux /opt/sonar-scanner
-        echo "export PATH=\$PATH:/opt/sonar-scanner/bin" >> $GITHUB_ENV
 
     - name: Install dependencies
       run: |

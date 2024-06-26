@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: OWASP Dependency Check
-      uses: dependency-check/github-action@v4
+      uses: jeremylong/gha-dependency-check@v4.4.1
       with:
         project: 'My Python Project'
         scan: '.'

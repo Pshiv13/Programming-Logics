@@ -1,4 +1,4 @@
-''' You are given an integer array target and an integer n.
+""" You are given an integer array target and an integer n.
 
 You have an empty stack with the two following operations:
 
@@ -30,16 +30,18 @@ Output: ["Push","Push","Push"]
 Explanation: Initially the stack s is empty. The last element is the top of the stack.
 Read 1 from the stream and push it to the stack. s = [1].
 Read 2 from the stream and push it to the stack. s = [1,2].
-Read 3 from the stream and push it to the stack. s = [1,2,3]. '''
+Read 3 from the stream and push it to the stack. s = [1,2,3]. """
+
 
 class Solution:
     def buildArray(self, target: List[int], n: int) -> List[str]:
         ans = []
         temp = []
 
-        if len(target) == 0: return []
+        if len(target) == 0:
+            return []
 
-        for i in range(1, n+1):
+        for i in range(1, n + 1):
 
             temp.append(i)
             ans.append("Push")

@@ -1,4 +1,4 @@
-''' Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.
+""" Given a string s, sort it in decreasing order based on the frequency of the characters. The frequency of a character is the number of times it appears in the string.
 Return the sorted string. If there are multiple answers, return any of them.
 
 Example 1:
@@ -11,7 +11,8 @@ Example 2:
 Input: s = "cccaaa"
 Output: "aaaccc"
 Explanation: Both 'c' and 'a' appear three times, so both "cccaaa" and "aaaccc" are valid answers.
-Note that "cacaca" is incorrect, as the same characters must be together. '''
+Note that "cacaca" is incorrect, as the same characters must be together. """
+
 
 class Solution:
     def frequencySort(self, s: str) -> str:
@@ -24,5 +25,5 @@ class Solution:
         for i, j in D.items():
             for _ in range(j):
                 ans = ans + i
-        
+
         return ans
